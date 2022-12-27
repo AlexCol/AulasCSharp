@@ -4,7 +4,7 @@ namespace projeto1 {
     internal class Program {
         static void Main(string[] args) {
             Console.WriteLine("Hello World!");
-            //Console.WriteLine("Oi");
+            Console.WriteLine("Oi");
             
             //string? linha;
             //linha = Console.ReadLine();
