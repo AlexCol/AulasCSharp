@@ -13,8 +13,10 @@ namespace projeto1 {
             //Console.WriteLine(Int32.Parse("56") + 3);
 
             //MeuCodigo.executar(args);
-            Operadores.executar(args);
+            //Operadores.executar(args);
             //Console.ReadLine();
+
+            Console.WriteLine("Oi");
         }
     }
 }
