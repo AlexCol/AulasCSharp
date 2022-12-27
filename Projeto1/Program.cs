@@ -16,7 +16,8 @@ namespace projeto1 {
             //Operadores.executar(args);
             //Console.ReadLine();
 
-            //Console.WriteLine("Oi");
+            Console.WriteLine("Oi");
+            Console.WriteLine("Tchau");
         }
     }
 }
