@@ -1,8 +1,12 @@
 ﻿using tabuleiro;
+using xadrez_console;
+
+Console.Clear();
+
+Tabuleiro tab = new Tabuleiro(8, 8);
+Tela.imprimirTabuleiro(tab);
 
 
 
-Posicao p = new Posicao(1, 2);
-System.Console.WriteLine(p);
 
-Tabuleiro t = new Tabuleiro(8, 8);
+Console.ReadLine();
