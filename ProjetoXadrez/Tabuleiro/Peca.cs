@@ -13,4 +13,8 @@ class Peca
         this.tabuleiro = tabuleiro;
         this.qtdeMovimentos = 0;
     }
+
+    public void incrementaQteMovimentos() {
+        qtdeMovimentos++;
+    }
 }
