@@ -1,5 +1,7 @@
+using System.Globalization;
+
 namespace tabuleiro;
-class Peca
+abstract class Peca
 {
     public Posicao? posicao { get; set; }
     public Cor cor { get; set; }
@@ -16,5 +18,28 @@ class Peca
 
     public void incrementaQteMovimentos() {
         qtdeMovimentos++;
+    }
+
+    public abstract bool[,] movimentosPossiveis();
+
+    public bool existeMovimentosPossiveis() {
+        bool[,] mat = movimentosPossiveis();
+        for (int i = 0; i < tabuleiro.linhas; i++) {
+            for (int j = 0; j < tabuleiro.colunas; j++) {
+                if (mat[i,j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool podeMoverPara(Posicao pos) {
+        return movimentosPossiveis()[pos.linha, pos.coluna];
+    }
+
+    protected virtual bool podeMover(Posicao pos) {
+        Peca p = tabuleiro.peca(pos);
+        return (p == null || p.cor != this.cor);
     }
 }
