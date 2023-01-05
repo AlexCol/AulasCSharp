@@ -3,17 +3,14 @@ using tabuleiro;
 namespace xadrez;
 class Rei : Peca
 {
-    public Rei(Tabuleiro tabuleiro, Cor cor) : base(tabuleiro, cor)
-    {
+    public Rei(Tabuleiro tabuleiro, Cor cor) : base(tabuleiro, cor) {
     }
 
-    public override string ToString()
-    {
-        return "R";
+    public override string ToString() {
+        return "K";
     }
 
-    public override bool[,] movimentosPossiveis()
-    {
+    public override bool[,] movimentosPossiveis() {
         
         bool[,] mat = new bool[tabuleiro.colunas, tabuleiro.linhas];
         if (posicao == null) return mat;

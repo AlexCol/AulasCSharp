@@ -30,7 +30,8 @@ try  {
             Console.ReadLine();
         }
     };
-
+    Console.Clear();
+    Tela.imprimirPartida(partida);
 
 } catch (TabuleiroException t) {
     System.Console.WriteLine(t.Message);
