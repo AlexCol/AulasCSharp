@@ -8,12 +8,8 @@ try  {
     while (!partida.terminada) {
         try{
             Console.Clear();
-            Tela.imprimirTabuleiro(partida.tab);
-
-            Console.WriteLine();
-            Console.WriteLine($"Turno: {partida.turno}");
-            Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
-
+            Tela.imprimirPartida(partida);
+            
             Console.WriteLine();
             Console.Write("Origem: ");
             Posicao origem = Tela.lerPosicaoXadrex().toPosicao();
@@ -21,14 +17,13 @@ try  {
 
             Console.Clear();
             bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();                        
-            Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);        
-
+            Tela.imprimirPartida(partida, posicoesPossiveis);
+            
             Console.WriteLine();
             Console.Write("Destino: ");
             Posicao destino = Tela.lerPosicaoXadrex().toPosicao();
             partida.validarPosicaoDeDestino(origem, destino);
 
-            System.Console.WriteLine(origem);
             partida.realizaJogada(origem, destino);
         } catch (TabuleiroException e) {
             Console.WriteLine(e.Message);
