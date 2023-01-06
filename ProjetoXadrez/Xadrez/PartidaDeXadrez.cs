@@ -12,13 +12,14 @@ class PartidaDeXadrez
     private HashSet<Peca> pecas;
     private HashSet<Peca> capturadas;
     public bool xeque { get; private set; }
-
+    public Peca? vulneravelEnPassant { get; private set; }
     public PartidaDeXadrez() {
         tab = new Tabuleiro(8, 8);
         turno = 1;
         jogadorAtual = Cor.Branca;
         terminada = false;
         xeque = false;
+        vulneravelEnPassant = null;
         pecas = new HashSet<Peca>();
         capturadas = new HashSet<Peca>();
         colocarPecas();
@@ -42,6 +43,14 @@ class PartidaDeXadrez
         } else {
             turno++;
             mudaJogador();
+        }
+
+        Peca p = tab.peca(destino);
+        //! #jogada especial en passant
+        if (p is Peao && destino.linha == origem.linha-2 || destino.linha == origem.linha+2) {
+            vulneravelEnPassant = p;
+        } else {
+            vulneravelEnPassant = null;
         }
     }
 
@@ -104,6 +113,22 @@ class PartidaDeXadrez
                 }
             }
 
+            //!#jogada especial en passant
+            if (p is Peao) {                
+                if (origem.coluna != destino.coluna && pecaCapturada == null) {                    
+                    Posicao posPeaoCapturado;
+                    if (p.cor == Cor.Branca) {
+                        posPeaoCapturado = new Posicao(destino.linha + 1, destino.coluna);
+                    } else {
+                        posPeaoCapturado = new Posicao(destino.linha - 1, destino.coluna);
+                    }
+                    pecaCapturada = tab.retirarPeca(posPeaoCapturado);
+                    if (pecaCapturada != null) {
+                        capturadas.Add(pecaCapturada);
+                    }
+                }
+            }
+
             return pecaCapturada;
         }
         return null;
@@ -138,7 +163,21 @@ class PartidaDeXadrez
                     T.decrementaQteMovimentos();
                     tab.colocarPeca(T, origemDaTorre);
                 }
-            }            
+            }    
+
+            //!#jogada especial en passant
+            if (p is Peao) {                
+                if (origem.coluna != destino.coluna && pecaCapturada == vulneravelEnPassant) {                    
+                    Peca? peao = tab.retirarPeca(destino);
+                    Posicao posPeao;
+                    if (p.cor == Cor.Branca) {
+                        posPeao = new Posicao(3, destino.coluna);
+                    } else {
+                        posPeao = new Posicao(4, destino.coluna);
+                    }
+                }
+            }
+            
         }
     }
 
@@ -254,7 +293,7 @@ class PartidaDeXadrez
         colocarNovaPeca('b', 8, new Cavalo(tab, Cor.Preta));
         colocarNovaPeca('g', 8, new Cavalo(tab, Cor.Preta));
         colocarNovaPeca('d', 8, new Rainha(tab, Cor.Preta));
-        colocarNovaPeca('e', 8, new Rei(tab, Cor.Preta, this));        
+        colocarNovaPeca('e', 8, new Rei(tab, Cor.Preta, this));
     }
 
 }
