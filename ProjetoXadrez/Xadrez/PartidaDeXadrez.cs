@@ -283,18 +283,15 @@ class PartidaDeXadrez
         colocarNovaPeca('e', 2, new Peao(tab, Cor.Branca, this));
         colocarNovaPeca('f', 2, new Peao(tab, Cor.Branca, this));
         colocarNovaPeca('g', 2, new Peao(tab, Cor.Branca, this));
-        //colocarNovaPeca('h', 2, new Peao(tab, Cor.Branca, this));
+        colocarNovaPeca('h', 2, new Peao(tab, Cor.Branca, this));
         colocarNovaPeca('a', 1, new Torre(tab, Cor.Branca));
-        //colocarNovaPeca('h', 1, new Torre(tab, Cor.Branca));
+        colocarNovaPeca('h', 1, new Torre(tab, Cor.Branca));
         colocarNovaPeca('c', 1, new Bispo(tab, Cor.Branca));
         colocarNovaPeca('f', 1, new Bispo(tab, Cor.Branca));
         colocarNovaPeca('b', 1, new Cavalo(tab, Cor.Branca));
         colocarNovaPeca('g', 1, new Cavalo(tab, Cor.Branca));
         colocarNovaPeca('d', 1, new Rainha(tab, Cor.Branca));
         colocarNovaPeca('e', 1, new Rei(tab, Cor.Branca, this));
-
-        colocarNovaPeca('h', 2, new Peao(tab, Cor.Preta, this));
-
         //!        
         colocarNovaPeca('a', 7, new Peao(tab, Cor.Preta, this));
         colocarNovaPeca('b', 7, new Peao(tab, Cor.Preta, this));
