@@ -1,0 +1,9 @@
+4300.00,Maria Brown
+3100.00,Alex Green
+Alex Brown,5000.00
+3100.00,Bob Grey
+3500.00,Anna White
+Willian Red,2900.00
+2450.00,Alex Black
+4390.00,Eduardo Rose
+Marta Blue,6100.00
