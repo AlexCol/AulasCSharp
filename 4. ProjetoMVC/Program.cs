@@ -1,12 +1,16 @@
+using _4._ProjetoMVC.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var conectionString = builder.Configuration["ConnectionStrings:SalesWebMvcContext"];
 
-/*
-builder.Services.AddDbContext<SalesWebMvcContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesWebMvcContext")));
-*/
+builder.Services.AddMySql<SalesWebMvcContext>(conectionString,
+                        ServerVersion.AutoDetect(conectionString)
+                    );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
