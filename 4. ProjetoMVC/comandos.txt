@@ -1,0 +1,3 @@
+--dotnet ef migrations add 'nome do migration'
+--dotnet ef migrations remove (desfaz migrations não dados carga)
+--dotnet ef database update (realiza carga do migration criado pro banco de dados)
