@@ -1,5 +1,6 @@
 using _4._ProjetoMVC.Data;
 using _4._ProjetoMVC.Models;
+using _4._ProjetoMVC.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,9 +14,9 @@ builder.Services.AddMySql<SalesWebMvcContext>(conectionString,
                     );
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
-
 
 //usando SeedingServide
 if (app.Environment.IsDevelopment())

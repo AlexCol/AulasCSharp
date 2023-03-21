@@ -11,8 +11,8 @@ using _4._ProjetoMVC.Models;
 namespace _4._ProjetoMVC.Migrations
 {
     [DbContext(typeof(SalesWebMvcContext))]
-    [Migration("20230320114202_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20230321131417_Nova")]
+    partial class Nova
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,7 +75,7 @@ namespace _4._ProjetoMVC.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -104,7 +104,9 @@ namespace _4._ProjetoMVC.Migrations
                 {
                     b.HasOne("_4._ProjetoMVC.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Department");
                 });
