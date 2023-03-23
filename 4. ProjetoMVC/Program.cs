@@ -1,6 +1,8 @@
+using System.Globalization;
 using _4._ProjetoMVC.Data;
 using _4._ProjetoMVC.Models;
 using _4._ProjetoMVC.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,7 @@ builder.Services.AddMySql<SalesWebMvcContext>(conectionString,
 
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<DepartmentService>();
 
 var app = builder.Build();
 
@@ -29,6 +32,16 @@ if (app.Environment.IsDevelopment())
         meuSeed.Seed();
     }
 }
+
+var enUS = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(enUS),
+    SupportedCultures = new List<CultureInfo> { enUS },
+    SupportedUICultures = new List<CultureInfo> { enUS }
+};
+app.UseRequestLocalization(localizationOptions);
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
